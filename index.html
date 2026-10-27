@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം</title>
+<meta name="description" content="മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം, നിലമ്പതി, പൂലാനി: ദർശന സമയം, പൂജകൾ, വഴിപാടുകൾ, ഉത്സവങ്ങൾ, അറിയിപ്പുകൾ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================= COLOURS & FONTS =================
+   Change colours here. Peacock teal/blue + temple gold on warm ivory. */
+:root{
+  --ivory:#fbf6ec;
+  --paper:rgba(255,253,248,.82);
+  --ink:#2c2118;
+  --muted:#7b6a57;
+  --gold:#b8892b;
+  --gold-soft:#dcc07a;
+  --teal:#0f6f6c;
+  --blue:#1d3f8f;
+  --maroon:#7c2128;
+  --line:rgba(184,137,43,.28);
+  --head:"Noto Serif Malayalam", "Manjari", serif;
+  --body:"Manjari", "Noto Sans Malayalam", sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);font-size:17px;line-height:1.85;color:var(--ink);
+  background:
+    radial-gradient(ellipse 55% 45% at 88% 12%, rgba(15,111,108,.08), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 8% 92%, rgba(184,137,43,.10), transparent 70%),
+    var(--ivory);
+  background-attachment:fixed;min-height:100vh;overflow-x:hidden;
+}
+a{color:var(--teal)}
+img{max-width:100%;display:block}
+
+/* ================= PEACOCK FEATHER (background) ================= */
+.feather-bg{position:fixed;z-index:0;pointer-events:none;right:4vw;bottom:-5vh;height:94vh;aspect-ratio:200/600;opacity:.95;transition:opacity .8s, transform .8s}
+body:not(.on-home) .feather-bg{opacity:.22;transform:translateX(4vw)}
+.feather-bg svg{width:100%;height:100%;overflow:visible}
+.sway{transform-box:view-box;transform-origin:100px 600px;animation:sway 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-3.2deg)}to{transform:rotate(2.6deg)}}
+.barbs-l{transform-box:view-box;transform-origin:100px 300px;animation:breeze 6.5s ease-in-out infinite alternate}
+.barbs-r{transform-box:view-box;transform-origin:100px 300px;animation:breeze 7.3s ease-in-out infinite alternate-reverse}
+@keyframes breeze{from{transform:skewY(-.8deg)}to{transform:skewY(.9deg)}}
+.eye-glow{animation:glow 4.5s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:.9}}
+.feather-drift{position:fixed;z-index:0;pointer-events:none;width:44px;opacity:0;animation:drift 22s linear infinite}
+@keyframes drift{
+  0%{opacity:0;transform:translate(0,-10vh) rotate(-20deg)}
+  10%{opacity:.55}
+  50%{transform:translate(-14vw,45vh) rotate(25deg)}
+  90%{opacity:.45}
+  100%{opacity:0;transform:translate(-4vw,110vh) rotate(-15deg)}
+}
+
+/* ================= HEADER & MENU ================= */
+header.top{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:28px;
+  padding:14px clamp(16px,4vw,48px);
+  background:rgba(251,246,236,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);flex-shrink:0}
+.brand-mark{width:30px;height:46px}
+.brand b{display:block;font-family:var(--head);font-weight:600;font-size:19px;line-height:1.3;color:var(--maroon)}
+.brand small{display:block;font-size:13px;color:var(--muted);line-height:1.2}
+nav.menu{margin-left:auto}
+nav.menu ul{list-style:none;display:flex;gap:4px}
+.tab{
+  display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;
+  background:none;border:none;font-family:var(--body);font-size:14.5px;color:var(--muted);
+  padding:8px 12px 6px;border-radius:14px;position:relative;transition:color .25s, background .25s;
+}
+.tab svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.tab:hover{color:var(--teal);background:rgba(15,111,108,.06)}
+.tab.active{color:var(--maroon)}
+.tab.active::after{
+  content:"";position:absolute;left:22%;right:22%;bottom:0;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--teal),var(--blue),var(--gold));animation:grow .45s ease-out;
+}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+/* icon animations: each icon moves in its own way on hover and when chosen */
+.tab .flame{transform-box:fill-box;transform-origin:50% 100%}
+.tab:hover .flame,.tab.active .flame{animation:flicker 1.1s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scale(1,1)}30%{transform:scale(.88,1.12) rotate(-4deg)}60%{transform:scale(1.06,.92) rotate(3deg)}}
+.tab .bell{transform-box:fill-box;transform-origin:50% 0}
+.tab:hover .bell,.tab.pop .bell{animation:ring .9s ease-in-out}
+@keyframes ring{0%,100%{transform:rotate(0)}20%{transform:rotate(16deg)}40%{transform:rotate(-13deg)}60%{transform:rotate(8deg)}80%{transform:rotate(-4deg)}}
+.tab .kuda{transform-box:fill-box;transform-origin:50% 80%}
+.tab:hover .kuda,.tab.pop .kuda{animation:twirl 1s ease-in-out}
+@keyframes twirl{0%,100%{transform:rotate(0)}35%{transform:rotate(-12deg)}70%{transform:rotate(9deg)}}
+.tab .petal{transform-box:fill-box;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.tab:hover .p-l,.tab.active .p-l{transform:rotate(-14deg)}
+.tab:hover .p-r,.tab.active .p-r{transform:rotate(14deg)}
+.tab:hover .p-c,.tab.active .p-c{transform:scaleY(1.12)}
+.tab .scroll-r{transition:transform .5s}
+.tab:hover .scroll-r,.tab.active .scroll-r{transform:translateX(2.5px)}
+.tab .pin{transform-box:fill-box;transform-origin:50% 100%}
+.tab:hover .pin,.tab.pop .pin{animation:bounce .8s cubic-bezier(.3,1.5,.5,1)}
+@keyframes bounce{0%{transform:translateY(0)}35%{transform:translateY(-5px)}70%{transform:translateY(1px)}100%{transform:translateY(0)}}
+.tab.pop svg{animation:popin .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes popin{0%{transform:scale(.8)}100%{transform:scale(1)}}
+
+/* ================= PAGES ================= */
+main{position:relative;z-index:2;padding:46px clamp(16px,5vw,64px) 90px;max-width:1180px}
+.panel{display:none}
+.panel.show{display:block;animation:rise .6s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.kicker{font-size:14px;letter-spacing:1px;color:var(--gold)}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.35}
+h1{font-size:clamp(32px,5vw,54px);color:var(--maroon);margin:8px 0 6px}
+h2{font-size:clamp(26px,3.4vw,36px);color:var(--maroon);margin:6px 0 10px}
+h3{font-size:20px;color:var(--ink)}
+.place{font-size:18px;color:var(--teal);margin-bottom:20px}
+.lead{max-width:56ch;font-size:18px}
+.intro{max-width:60ch;color:var(--muted);margin-bottom:30px}
+.divider{width:120px;height:14px;margin:18px 0 26px;display:block}
+
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:999px;cursor:pointer;
+  font-family:var(--body);font-size:16px;text-decoration:none;border:1px solid var(--teal);transition:all .25s}
+.btn.solid{background:var(--teal);color:#fff}
+.btn.solid:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--teal)}
+.btn.ghost:hover{background:rgba(15,111,108,.08);transform:translateY(-2px)}
+
+.hero{min-height:52vh;max-width:640px;padding-top:4vh}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.home-cards{margin-top:54px;max-width:860px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px 24px 20px;
+  backdrop-filter:blur(4px);transition:transform .3s, box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(29,63,143,.35)}
+.card .label{font-size:13.5px;color:var(--gold);letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card .label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.card p{margin-top:6px}
+.more{display:inline-block;margin-top:10px;font-size:15px;color:var(--teal);cursor:pointer;background:none;border:none;font-family:var(--body);padding:0}
+.more:hover{color:var(--blue)}
+
+.times{width:100%;border-collapse:collapse;margin-top:6px}
+.times td{padding:5px 0;border-bottom:1px dashed var(--line)}
+.times td:last-child{text-align:right;font-weight:700;color:var(--teal);white-space:nowrap;padding-left:12px}
+.times tr.sub td{padding-top:14px;border:none;font-family:var(--head);color:var(--maroon);font-weight:600}
+
+/* updates */
+.notice{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.notice:first-child{padding-top:4px}
+.date{font-family:var(--head);color:var(--gold);text-align:center;line-height:1.2}
+.date b{display:block;font-size:30px;color:var(--teal)}
+.date span{font-size:13px}
+.notice .tag{display:inline-block;font-size:12.5px;color:var(--maroon);border:1px solid rgba(124,33,40,.3);border-radius:999px;padding:0 10px;margin-left:8px;vertical-align:middle}
+.notice p{margin-top:4px;max-width:62ch}
+
+/* festivals */
+.fest{position:relative;overflow:hidden}
+.fest .when{font-size:15px;color:var(--teal);margin:2px 0 8px}
+.fest .ico{position:absolute;right:-10px;top:-10px;width:86px;height:86px;opacity:.12;stroke:var(--blue);fill:none;stroke-width:1.2}
+.fest.feature{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:center;
+  background:linear-gradient(120deg, rgba(15,111,108,.09), rgba(29,63,143,.07) 55%, rgba(184,137,43,.12))}
+.fest.feature h3{font-size:26px;color:var(--maroon)}
+.fest ul{margin:8px 0 0 20px}
+.fest li::marker{color:var(--gold)}
+
+/* pooja */
+.vz{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.vz th{text-align:left;font-family:var(--head);font-weight:600;color:var(--maroon);padding:14px 18px;background:rgba(184,137,43,.10);font-size:16px}
+.vz td{padding:13px 18px;border-top:1px solid var(--line);vertical-align:top}
+.vz td:first-child{font-weight:700;white-space:nowrap}
+.vz td:last-child{text-align:right;color:var(--teal);font-weight:700;white-space:nowrap}
+.vz tr{transition:background .2s}
+.vz tbody tr:hover{background:rgba(15,111,108,.05)}
+.section-gap{margin-top:46px}
+.note{font-size:15px;color:var(--muted);margin-top:12px}
+.rules{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.rules li{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.rules li::before{content:"✦";color:var(--gold);line-height:1.6}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:22px;align-items:stretch}
+.contact-list{list-style:none}
+.contact-list li{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.contact-list li:last-child{border:none}
+.contact-list svg{width:22px;height:22px;flex-shrink:0;margin-top:4px;stroke:var(--teal);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.contact-list b{display:block;font-family:var(--head);font-weight:600;color:var(--maroon);font-size:15px}
+.map{border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:340px;background:var(--paper)}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:sepia(.18) saturate(.9)}
+
+footer{position:relative;z-index:2;text-align:center;padding:30px 16px 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin-bottom:4px}
+
+/* gentle reveal of cards */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s, transform .6s}
+.rv.in{opacity:1;transform:none}
+
+/* ================= MOBILE ================= */
+@media (max-width:900px){
+  header.top{padding:12px 16px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(251,246,236,.95)}
+  nav.menu{position:fixed;left:0;right:0;bottom:0;margin:0;background:rgba(251,246,236,.96);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);padding:4px 2px calc(4px + env(safe-area-inset-bottom))}
+  nav.menu ul{justify-content:space-around;gap:0}
+  .tab{font-size:11.5px;padding:6px 4px 5px;gap:1px;line-height:1.3}
+  .tab svg{width:23px;height:23px}
+  .tab.active::after{bottom:auto;top:-4px}
+  main{padding:30px 16px 120px}
+  footer{padding-bottom:110px}
+  .feather-bg{height:70vh;right:-14vw;bottom:auto;top:12vh;opacity:.5}
+  body:not(.on-home) .feather-bg{opacity:.14}
+  .hero{min-height:auto}
+  .fest.feature,.contact-grid{grid-template-columns:1fr}
+  .notice{grid-template-columns:64px 1fr;gap:14px}
+  .vz td:first-child{white-space:normal}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="on-home">
+
+<!-- the big peacock feather (drawn by the script at the bottom) -->
+<div class="feather-bg" aria-hidden="true"><svg id="feather" viewBox="0 0 200 600"></svg></div>
+<svg class="feather-drift" style="right:30vw;animation-delay:3s" viewBox="0 0 200 600" aria-hidden="true"><use href="#mini"/></svg>
+<svg class="feather-drift" style="right:12vw;animation-delay:14s;width:30px" viewBox="0 0 200 600" aria-hidden="true"><use href="#mini"/></svg>
+
+<header class="top">
+  <a class="brand" href="#home" aria-label="പൂമുഖം">
+    <svg class="brand-mark" viewBox="0 0 200 600" aria-hidden="true"><use href="#mini"/></svg>
+    <span><b>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം</b><small>നിലമ്പതി, പൂലാനി</small></span>
+  </a>
+  <nav class="menu" aria-label="പ്രധാന മെനു">
+    <ul>
+      <li><button class="tab" data-tab="home">
+        <svg viewBox="0 0 24 24"><path class="flame" d="M12 2.5c1.6 1.9 2 3.3 2 4.3a2 2 0 01-4 0c0-1 .4-2.4 2-4.3z"/><path d="M7 10.5h10l-1.2 2.2H8.2z"/><path d="M12 12.7v6"/><path d="M8 21.5h8"/><path d="M9.5 18.7h5"/></svg>
+        <span>പൂമുഖം</span></button></li>
+      <li><button class="tab" data-tab="updates">
+        <svg viewBox="0 0 24 24"><g class="bell"><path d="M12 2.5v1.6"/><path d="M6.5 16.5V11a5.5 5.5 0 0111 0v5.5l1.5 2H5z"/><path d="M10.2 20.5a1.9 1.9 0 003.6 0"/></g></svg>
+        <span>അറിയിപ്പുകൾ</span></button></li>
+      <li><button class="tab" data-tab="ulsavam">
+        <svg viewBox="0 0 24 24"><g class="kuda"><path d="M3.5 11.5a8.5 7 0 0117 0z"/><path d="M12 4.5V2.8"/><path d="M12 11.5v9.7"/><path d="M5.5 11.5v2.3M9 11.5v3M15 11.5v3M18.5 11.5v2.3"/></g></svg>
+        <span>ഉത്സവം</span></button></li>
+      <li><button class="tab" data-tab="pooja">
+        <svg viewBox="0 0 24 24"><path class="petal p-c" d="M12 4c2.2 2.6 2.2 7.6 0 11-2.2-3.4-2.2-8.4 0-11z"/><path class="petal p-l" d="M11.4 15C8.6 14.6 5.7 12 5 8.4c2.7.4 5.2 2.6 6.4 6.6z"/><path class="petal p-r" d="M12.6 15c2.8-.4 5.7-3 6.4-6.6-2.7.4-5.2 2.6-6.4 6.6z"/><path d="M4 17.5c2.5 2 13.5 2 16 0"/></svg>
+        <span>പൂജ / വഴിപാട്</span></button></li>
+      <li><button class="tab" data-tab="aithihyam">
+        <svg viewBox="0 0 24 24"><path d="M6 4.5h10.5a2 2 0 012 2v11"/><path d="M6 4.5a2 2 0 00-2 2v1.5h4V6.5a2 2 0 00-2-2z"/><path d="M8 8v11.5h10.5" /><g class="scroll-r"><path d="M18.5 17.5a2 2 0 110 4h-11"/></g><path d="M11 9.5h4.5M11 12.5h4.5M11 15.5h3"/></svg>
+        <span>ഐതിഹ്യം</span></button></li>
+      <li><button class="tab" data-tab="contact">
+        <svg viewBox="0 0 24 24"><g class="pin"><path d="M12 21.5s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10.5" r="2.3"/></g></svg>
+        <span>ബന്ധപ്പെടുക</span></button></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ================= പൂമുഖം / HOME ================= -->
+  <section class="panel" id="home">
+    <div class="hero">
+      <div class="kicker">ഓം നമോ ഭഗവതേ വാസുദേവായ</div>
+      <h1>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം</h1>
+      <div class="place">നിലമ്പതി, പൂലാനി</div>
+      <svg class="divider" viewBox="0 0 120 14" aria-hidden="true"><path d="M2 7h44M74 7h44" stroke="#b8892b" stroke-width="1"/><path d="M60 1.5c3 2.4 3 8.6 0 11-3-2.4-3-8.6 0-11z" fill="#0f6f6c"/><circle cx="52" cy="7" r="1.6" fill="#b8892b"/><circle cx="68" cy="7" r="1.6" fill="#b8892b"/></svg>
+      <p class="lead">ഉണ്ണിക്കണ്ണന്റെ അനുഗ്രഹം തേടിയെത്തുന്ന എല്ലാ ഭക്തജനങ്ങൾക്കും മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രത്തിലേക്ക് ഹൃദ്യമായ സ്വാഗതം. ദർശന സമയം, പൂജകൾ, വഴിപാടുകൾ, ഉത്സവങ്ങൾ, പുതിയ അറിയിപ്പുകൾ എന്നിവ ഇവിടെ ഒറ്റനോട്ടത്തിൽ അറിയാം.</p>
+      <div class="btns">
+        <a class="btn solid" href="#pooja">വഴിപാടുകൾ കാണുക</a>
+        <a class="btn ghost" href="#contact">എത്തിച്ചേരാനുള്ള വഴി</a>
+      </div>
+    </div>
+
+    <div class="grid home-cards">
+      <div class="card rv">
+        <div class="label">ദർശന സമയം</div>
+        <!-- TIMINGS: placeholder times, change to the real ones -->
+        <table class="times">
+          <tr class="sub"><td colspan="2">രാവിലെ</td></tr>
+          <tr><td>നട തുറക്കൽ, നിർമ്മാല്യ ദർശനം</td><td>5:00</td></tr>
+          <tr><td>ഉഷഃപൂജ</td><td>6:30</td></tr>
+          <tr><td>ഉച്ചപൂജ</td><td>10:30</td></tr>
+          <tr><td>നട അടയ്ക്കൽ</td><td>11:00</td></tr>
+          <tr class="sub"><td colspan="2">വൈകുന്നേരം</td></tr>
+          <tr><td>നട തുറക്കൽ</td><td>5:00</td></tr>
+          <tr><td>ദീപാരാധന</td><td>സന്ധ്യയ്ക്ക്</td></tr>
+          <tr><td>അത്താഴപൂജ</td><td>7:30</td></tr>
+          <tr><td>നട അടയ്ക്കൽ</td><td>8:00</td></tr>
+        </table>
+      </div>
+      <div style="display:grid;gap:20px;align-content:start">
+        <div class="card rv">
+          <div class="label">പുതിയ അറിയിപ്പ്</div>
+          <h3>മണ്ഡലകാലം ആരംഭിക്കുന്നു</h3>
+          <p>വൃശ്ചികം 1 മുതൽ 41 ദിവസം ചുറ്റുവിളക്കും വിശേഷാൽ പൂജകളും ഉണ്ടായിരിക്കും.</p>
+          <a class="more" href="#updates">എല്ലാ അറിയിപ്പുകളും →</a>
+        </div>
+        <div class="card rv">
+          <div class="label">പ്രധാന ആഘോഷം</div>
+          <h3>അഷ്ടമിരോഹിണി</h3>
+          <p>ചിങ്ങമാസത്തിലെ ശ്രീകൃഷ്ണ ജയന്തി: ഉറിയടി, ശോഭായാത്ര, അർദ്ധരാത്രി പൂജ.</p>
+          <a class="more" href="#ulsavam">ഉത്സവങ്ങൾ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= അറിയിപ്പുകൾ / LATEST UPDATES =================
+       To add a notice: copy one <article class="notice"> block and put it at the top. -->
+  <section class="panel" id="updates">
+    <div class="kicker">പുതിയ വിവരങ്ങൾ</div>
+    <h2>അറിയിപ്പുകൾ</h2>
+    <p class="intro">ക്ഷേത്രവുമായി ബന്ധപ്പെട്ട പുതിയ അറിയിപ്പുകളും വിശേഷ ദിവസങ്ങളും.</p>
+    <div class="card" style="padding-top:10px;padding-bottom:6px">
+      <article class="notice rv">
+        <div class="date"><b>16</b><span>നവംബർ 2026</span></div>
+        <div><h3>മണ്ഡലകാലം ആരംഭിക്കുന്നു <span class="tag">വിശേഷം</span></h3>
+          <p>വൃശ്ചികം 1 മുതൽ 41 ദിവസം ദിവസവും ചുറ്റുവിളക്ക്, ഭജന, വിശേഷാൽ പൂജകൾ എന്നിവ ഉണ്ടായിരിക്കും. ചുറ്റുവിളക്ക് വഴിപാട് ക്ഷേത്രം ഓഫീസിൽ മുൻകൂട്ടി ബുക്ക് ചെയ്യാം.</p></div>
+      </article>
+      <article class="notice rv">
+        <div class="date"><b>01</b><span>നവംബർ 2026</span></div>
+        <div><h3>വഴിപാട് ബുക്കിംഗ്</h3>
+          <p>എല്ലാ വഴിപാടുകളും ക്ഷേത്രം ഓഫീസിൽ നേരിട്ടോ ഫോൺ വഴിയോ ബുക്ക് ചെയ്യാവുന്നതാണ്.</p></div>
+      </article>
+      <article class="notice rv">
+        <div class="date"><b>27</b><span>ഒക്ടോബർ 2026</span></div>
+        <div><h3>ക്ഷേത്ര വെബ്സൈറ്റ് ആരംഭിച്ചു <span class="tag">പുതിയത്</span></h3>
+          <p>ക്ഷേത്രത്തിലെ ദർശന സമയം, ഉത്സവങ്ങൾ, അറിയിപ്പുകൾ എന്നിവ ഇനി ഈ വെബ്സൈറ്റിൽ ലഭ്യമാകും.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= ഉത്സവം / FESTIVALS ================= -->
+  <section class="panel" id="ulsavam">
+    <div class="kicker">ആഘോഷങ്ങൾ</div>
+    <h2>ഉത്സവങ്ങൾ</h2>
+    <p class="intro">ഭഗവാന്റെ പ്രധാന വിശേഷ ദിവസങ്ങളും ആഘോഷങ്ങളും.</p>
+    <div class="grid">
+      <div class="card fest feature rv">
+        <div>
+          <div class="label">ഏറ്റവും പ്രധാനം</div>
+          <h3>അഷ്ടമിരോഹിണി</h3>
+          <div class="when">ചിങ്ങം (ആഗസ്റ്റ്–സെപ്റ്റംബർ)</div>
+          <p>ശ്രീകൃഷ്ണ ഭഗവാന്റെ തിരുജന്മദിനം. ക്ഷേത്രത്തിലെ ഏറ്റവും വലിയ ആഘോഷം.</p>
+        </div>
+        <ul>
+          <li>പുലർച്ചെ മുതൽ വിശേഷാൽ പൂജകൾ</li>
+          <li>ഉണ്ണിക്കണ്ണന്മാരുടെ ശോഭായാത്ര</li>
+          <li>ഉറിയടി</li>
+          <li>അർദ്ധരാത്രി ജന്മാഷ്ടമി പൂജ</li>
+        </ul>
+      </div>
+      <div class="card fest rv">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+        <h3>വിഷു</h3><div class="when">മേടം 1 (ഏപ്രിൽ)</div>
+        <p>പുലർച്ചെ വിഷുക്കണി ദർശനവും വിഷുക്കൈനീട്ടവും.</p>
+      </div>
+      <div class="card fest rv">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9 7 7 0 01-9-9z"/></svg>
+        <h3>വൃശ്ചിക ഏകാദശി</h3><div class="when">വൃശ്ചികം</div>
+        <p>ദിവസം മുഴുവൻ നാമജപവും ഏകാദശി വ്രതവും.</p>
+      </div>
+      <div class="card fest rv">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 3c1.5 1.8 2 3 2 4a2 2 0 01-4 0c0-1 .5-2.2 2-4z"/><path d="M6 12h12M8 12v9M16 12v9M5 21h14"/></svg>
+        <h3>മണ്ഡലകാലം</h3><div class="when">വൃശ്ചികം 1 മുതൽ 41 ദിവസം</div>
+        <p>ദിവസവും ചുറ്റുവിളക്കും ഭജനയും.</p>
+      </div>
+      <div class="card fest rv">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg>
+        <h3>പ്രതിഷ്ഠാദിനം</h3><div class="when">തീയതി ഉടൻ ചേർക്കും</div>
+        <p>കലശാഭിഷേകവും വിശേഷാൽ പൂജകളും.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= പൂജ / വഴിപാട് ================= -->
+  <section class="panel" id="pooja">
+    <div class="kicker">പൂജകളും വഴിപാടുകളും</div>
+    <h2>പൂജ / വഴിപാട്</h2>
+    <p class="intro">ദിവസേനയുള്ള പൂജകളും ഭക്തർക്ക് നടത്താവുന്ന വഴിപാടുകളും.</p>
+
+    <!-- OFFERINGS: add the real list and prices (replace ₹ — with the amount) -->
+    <table class="vz rv">
+      <thead><tr><th>വഴിപാട്</th><th>വിവരണം</th><th>നിരക്ക്</th></tr></thead>
+      <tbody>
+        <tr><td>പുഷ്പാഞ്ജലി</td><td>ഭഗവാന് പുഷ്പങ്ങൾ അർപ്പിച്ചുള്ള അർച്ചന</td><td>₹ —</td></tr>
+        <tr><td>പാൽപ്പായസം</td><td>ഭഗവാന് ഏറ്റവും പ്രിയപ്പെട്ട നിവേദ്യം</td><td>₹ —</td></tr>
+        <tr><td>നെയ്പ്പായസം</td><td>നെയ്യും ശർക്കരയും ചേർത്ത നിവേദ്യം</td><td>₹ —</td></tr>
+        <tr><td>വെണ്ണ നിവേദ്യം</td><td>ഉണ്ണിക്കണ്ണന് പ്രിയപ്പെട്ട വെണ്ണ</td><td>₹ —</td></tr>
+        <tr><td>അവിൽ നിവേദ്യം</td><td>കുചേലന്റെ ഭക്തിയുടെ സ്മരണയ്ക്ക്</td><td>₹ —</td></tr>
+        <tr><td>തൃമധുരം</td><td>പഴം, തേൻ, ശർക്കര എന്നിവ ചേർത്ത നിവേദ്യം</td><td>₹ —</td></tr>
+        <tr><td>സഹസ്രനാമാർച്ചന</td><td>വിഷ്ണു സഹസ്രനാമം ചൊല്ലിയുള്ള അർച്ചന</td><td>₹ —</td></tr>
+        <tr><td>നെയ്‌വിളക്ക്</td><td>ഭഗവാന് മുന്നിൽ നെയ്‌വിളക്ക് തെളിയിക്കൽ</td><td>₹ —</td></tr>
+        <tr><td>ചുറ്റുവിളക്ക്</td><td>ശ്രീകോവിലിന് ചുറ്റുമുള്ള വിളക്കുകൾ തെളിയിക്കൽ</td><td>₹ —</td></tr>
+        <tr><td>തുളസിമാല</td><td>ഭഗവാന് തുളസിമാല ചാർത്തൽ</td><td>₹ —</td></tr>
+        <tr><td>ചോറൂണ്</td><td>കുഞ്ഞുങ്ങളുടെ ആദ്യ അന്നപ്രാശനം</td><td>₹ —</td></tr>
+      </tbody>
+    </table>
+    <p class="note">വഴിപാടുകൾ ക്ഷേത്രം ഓഫീസിൽ നേരിട്ടോ ഫോൺ വഴിയോ ബുക്ക് ചെയ്യാം.</p>
+
+    <h3 class="section-gap">ഭക്തജനങ്ങൾ ശ്രദ്ധിക്കേണ്ടവ</h3>
+    <ul class="rules">
+      <li>ക്ഷേത്രത്തിനുള്ളിൽ പരമ്പരാഗത വസ്ത്രധാരണം പാലിക്കുക.</li>
+      <li>പാദരക്ഷകൾ പുറത്ത് സൂക്ഷിക്കുക.</li>
+      <li>മൊബൈൽ ഫോൺ നിശ്ശബ്ദമാക്കുക; ശ്രീകോവിലിന്റെ ഫോട്ടോ എടുക്കരുത്.</li>
+      <li>ക്ഷേത്ര പരിസരം വൃത്തിയായി സൂക്ഷിക്കുക.</li>
+    </ul>
+  </section>
+
+  <!-- ================= ഐതിഹ്യം / ABOUT ================= -->
+  <section class="panel" id="aithihyam">
+    <div class="kicker">ക്ഷേത്രത്തെക്കുറിച്ച്</div>
+    <h2>ഐതിഹ്യം</h2>
+    <div class="grid" style="grid-template-columns:1.6fr 1fr;align-items:start">
+      <div class="card rv">
+        <!-- HISTORY: replace with the temple's own story -->
+        <p>നിലമ്പതിയിലെ പൂലാനിയിൽ സ്ഥിതി ചെയ്യുന്ന മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം നാട്ടുകാരുടെ ഭക്തിയുടെയും ഒരുമയുടെയും കേന്ദ്രമാണ്.</p>
+        <p>ക്ഷേത്രത്തിന്റെ ഐതിഹ്യവും ചരിത്രവും ഉടൻ ഇവിടെ ചേർക്കുന്നതാണ്.</p>
+      </div>
+      <div class="card rv">
+        <div class="label">പ്രതിഷ്ഠ</div>
+        <h3>ശ്രീകൃഷ്ണൻ</h3>
+        <div class="label" style="margin-top:18px">ഉപദേവതകൾ</div>
+        <p>വിവരങ്ങൾ ഉടൻ ചേർക്കും</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ബന്ധപ്പെടുക / CONTACT ================= -->
+  <section class="panel" id="contact">
+    <div class="kicker">വിലാസം</div>
+    <h2>ബന്ധപ്പെടുക</h2>
+    <div class="contact-grid">
+      <div class="card rv">
+        <ul class="contact-list">
+          <li><svg viewBox="0 0 24 24"><path d="M12 21.5s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10.5" r="2.3"/></svg>
+            <div><b>വിലാസം</b>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം<br>നിലമ്പതി, പൂലാനി<br>കേരളം</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 006.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 01-2 2A16.5 16.5 0 013 5.5a2 2 0 012-2z"/></svg>
+            <div><b>ഫോൺ</b>+91 — (ഉടൻ ചേർക്കും)</div></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><b>ഓഫീസ് സമയം</b>രാവിലെ 5:00 – 11:00<br>വൈകുന്നേരം 5:00 – 8:00</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 9.5L12 4l8 5.5"/><path d="M6 9v10h12V9"/><path d="M10 19v-5h4v5"/></svg>
+            <div><b>ക്ഷേത്ര ഭരണസമിതി</b>(പേര് ഉടൻ ചേർക്കും)</div></li>
+        </ul>
+      </div>
+      <div class="map rv">
+        <iframe title="ക്ഷേത്രത്തിലേക്കുള്ള വഴി" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Poolani%2C%20Kerala&z=14&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="mantra">ഓം നമോ നാരായണായ</div>
+  © <span id="yr"></span> മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം, നിലമ്പതി, പൂലാനി
+</footer>
+
+<!-- small feather used for the logo and the drifting feathers -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="mEye" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#0d1f4f"/><stop offset=".35" stop-color="#1d3f8f"/>
+      <stop offset=".6" stop-color="#0f8a86"/><stop offset=".8" stop-color="#b8892b"/><stop offset="1" stop-color="#7fa33a"/>
+    </radialGradient>
+    <g id="mini">
+      <path d="M100 595 Q112 330 100 70" stroke="#a78a4a" stroke-width="5" fill="none"/>
+      <path d="M100 520 C40 430 20 260 60 150 C75 105 90 80 100 60 C110 80 125 105 140 150 C180 260 160 430 100 520z" fill="#5f8f3e" opacity=".55"/>
+      <ellipse cx="100" cy="150" rx="46" ry="62" fill="url(#mEye)"/>
+      <path d="M100 118 C82 128 80 160 100 182 C120 160 118 128 100 118z" fill="#0d1f4f"/>
+    </g>
+  </defs>
+</svg>
+
+<script>
+/* ============ PEACOCK FEATHER: drawn barb by barb ============ */
+(() => {
+  const svg = document.getElementById('feather'), NS = 'http://www.w3.org/2000/svg';
+  const el = (n, a, p) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; };
+  // shaft (rachis): a gentle curve from the base (100,600) to the tip (100,40)
+  const P0 = [100, 600], P1 = [132, 320], P2 = [96, 40];
+  const B = t => [(1-t)*(1-t)*P0[0] + 2*(1-t)*t*P1[0] + t*t*P2[0], (1-t)*(1-t)*P0[1] + 2*(1-t)*t*P1[1] + t*t*P2[1]];
+  const D = t => { const dx = 2*(1-t)*(P1[0]-P0[0]) + 2*t*(P2[0]-P1[0]), dy = 2*(1-t)*(P1[1]-P0[1]) + 2*t*(P2[1]-P1[1]), m = Math.hypot(dx, dy); return [dx/m, dy/m]; };
+  const mix = (a, b, f) => a.map((v, i) => Math.round(v + (b[i] - v) * f));
+  const C = { bronze:[140,112,52], green:[58,132,58], emerald:[8,118,104], gold:[200,158,40] };
+  const colorAt = t => t < .45 ? mix(C.bronze, C.green, t/.45) : t < .75 ? mix(C.green, C.emerald, (t-.45)/.3) : mix(C.emerald, C.gold, (t-.75)/.25);
+
+  const defs = el('defs', {});
+  defs.innerHTML = `
+    <radialGradient id="eyeOuter" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#c9a640" stop-opacity=".95"/><stop offset=".8" stop-color="#8fae3c" stop-opacity=".85"/><stop offset="1" stop-color="#5f8f3e" stop-opacity="0"/></radialGradient>
+    <radialGradient id="eyeMid" cx="50%" cy="48%" r="50%"><stop offset=".55" stop-color="#16867f"/><stop offset="1" stop-color="#b07a2a"/></radialGradient>
+    <radialGradient id="eyeIn" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#3a6fd0"/><stop offset=".6" stop-color="#1d3f8f"/><stop offset="1" stop-color="#0c1d4a"/></radialGradient>
+    <radialGradient id="glint" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff6d6" stop-opacity=".9"/><stop offset="1" stop-color="#fff6d6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="shaft" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#cdb27a"/><stop offset="1" stop-color="#8a7a44"/></linearGradient>`;
+
+  const sway = el('g', { class: 'sway' });
+  const L = el('g', { class: 'barbs-l' }, sway), R = el('g', { class: 'barbs-r' }, sway);
+  const eyeT = .8;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+  for (let t = .04; t < .985; t += .0036) {
+    const [x, y] = B(t), [dx, dy] = D(t);
+    // width profile: wispy & sparse near the base, full around the eye, closing at the tip
+    let len = t < .3 ? 30 + 70 * (t/.3) : t < eyeT ? 100 - 10 * ((t-.3)/(eyeT-.3)) : 90 * Math.sqrt(Math.max(0, 1 - ((t-eyeT)/(1-eyeT+.02)) ** 1.6));
+    len *= .9 + rnd() * .2;
+    const loose = t < .32, col = colorAt(t);
+    const op = loose ? .35 + rnd() * .25 : .58 + rnd() * .3;
+    for (const s of [-1, 1]) {
+      if (loose && rnd() < .35) continue;          // gaps in the fluffy lower part
+      const nx = -dy * s, ny = dx * s;              // normal to the shaft
+      const up = loose ? .15 : .55;                 // barbs lean toward the tip
+      const ex = x + (nx * .85 + dx * up) * len, ey = y + (ny * .85 + dy * up) * len;
+      const cx = x + nx * len * .5 + dx * len * (loose ? -.05 : .15), cy = y + ny * len * .5 + dy * len * (loose ? -.05 : .15);
+      el('path', { d: `M${x.toFixed(1)} ${y.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`,
+        stroke: `rgb(${col})`, 'stroke-opacity': op.toFixed(2), 'stroke-width': loose ? .6 : .9, fill: 'none', 'stroke-linecap': 'round' }, s < 0 ? L : R);
+    }
+  }
+  el('path', { d: `M${P0} Q${P1} ${P2}`, stroke: 'url(#shaft)', 'stroke-width': 2.2, fill: 'none', 'stroke-linecap': 'round' }, sway);
+
+  // the eye (ocellus), turned to follow the shaft
+  const [ex, ey] = B(eyeT + .05), [tx, ty] = D(eyeT + .05), ang = Math.atan2(ty, tx) * 180 / Math.PI + 90;
+  const eye = el('g', { transform: `translate(${ex.toFixed(1)} ${ey.toFixed(1)}) rotate(${ang.toFixed(1)})` }, sway);
+  el('ellipse', { rx: 50, ry: 64, fill: 'url(#eyeOuter)', opacity: .85 }, eye);
+  el('ellipse', { rx: 33, ry: 44, cy: 3, fill: 'url(#eyeMid)' }, eye);
+  el('path', { d: 'M0 -26 C-22 -16 -24 14 0 32 C24 14 22 -16 0 -26z', fill: 'url(#eyeIn)' }, eye);
+  el('ellipse', { rx: 9, ry: 12, cy: -8, cx: -6, fill: 'url(#glint)', class: 'eye-glow' }, eye);
+})();
+
+/* ============ MENU: switch pages ============ */
+const tabs = [...document.querySelectorAll('.tab')], panels = [...document.querySelectorAll('.panel')];
+function show(id, animate) {
+  if (!document.getElementById(id)) id = 'home';
+  tabs.forEach(t => {
+    const on = t.dataset.tab === id;
+    t.classList.toggle('active', on); t.setAttribute('aria-current', on ? 'page' : 'false');
+    if (on && animate) { t.classList.remove('pop'); void t.offsetWidth; t.classList.add('pop'); }
+  });
+  panels.forEach(p => p.classList.toggle('show', p.id === id));
+  document.body.classList.toggle('on-home', id === 'home');
+  window.scrollTo({ top: 0 });
+  reveal();
+}
+tabs.forEach(t => t.addEventListener('click', () => { history.replaceState(null, '', '#' + t.dataset.tab); show(t.dataset.tab, true); }));
+window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
+
+/* gentle reveal of cards as they come into view */
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+function reveal() {
+  document.querySelectorAll('.panel.show .rv:not(.in)').forEach((r, i) => {
+    r.style.transitionDelay = (i * 70) + 'ms';
+    io ? io.observe(r) : r.classList.add('in');
+  });
+}
+show(location.hash.slice(1) || 'home', false);
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
