@@ -7,7 +7,7 @@
 <meta name="description" content="മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം, നിലമ്പതി, പൂലാനി: ദർശന സമയം, പൂജകൾ, വഴിപാടുകൾ, ഉത്സവങ്ങൾ, അറിയിപ്പുകൾ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ================= COLOURS & FONTS =================
    Change colours here. Peacock teal/blue + temple gold on warm ivory. */
@@ -22,13 +22,13 @@
   --blue:#1d3f8f;
   --maroon:#7c2128;
   --line:rgba(184,137,43,.28);
-  --head:"Noto Serif Malayalam", "Manjari", serif;
-  --body:"Manjari", "Noto Sans Malayalam", sans-serif;
+  --head:"Noto Serif Malayalam", "Noto Sans Malayalam", serif;
+  --body:"Noto Sans Malayalam", "Manjari", sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:var(--body);font-size:17px;line-height:1.85;color:var(--ink);
+  font-family:var(--body);font-size:16.5px;line-height:1.8;color:var(--ink);
   background:
     radial-gradient(ellipse 55% 45% at 88% 12%, rgba(15,111,108,.08), transparent 70%),
     radial-gradient(ellipse 50% 40% at 8% 92%, rgba(184,137,43,.10), transparent 70%),
@@ -38,25 +38,51 @@ body{
 a{color:var(--teal)}
 img{max-width:100%;display:block}
 
-/* ================= PEACOCK FEATHER (background) ================= */
-.feather-bg{position:fixed;z-index:0;pointer-events:none;right:4vw;bottom:-5vh;height:94vh;aspect-ratio:200/600;opacity:.95;transition:opacity .8s, transform .8s}
-body:not(.on-home) .feather-bg{opacity:.22;transform:translateX(4vw)}
-.feather-bg svg{width:100%;height:100%;overflow:visible}
-.sway{transform-box:view-box;transform-origin:100px 600px;animation:sway 9s ease-in-out infinite alternate}
-@keyframes sway{from{transform:rotate(-3.2deg)}to{transform:rotate(2.6deg)}}
-.barbs-l{transform-box:view-box;transform-origin:100px 300px;animation:breeze 6.5s ease-in-out infinite alternate}
-.barbs-r{transform-box:view-box;transform-origin:100px 300px;animation:breeze 7.3s ease-in-out infinite alternate-reverse}
-@keyframes breeze{from{transform:skewY(-.8deg)}to{transform:skewY(.9deg)}}
-.eye-glow{animation:glow 4.5s ease-in-out infinite}
-@keyframes glow{0%,100%{opacity:.35}50%{opacity:.9}}
-.feather-drift{position:fixed;z-index:0;pointer-events:none;width:44px;opacity:0;animation:drift 22s linear infinite}
-@keyframes drift{
-  0%{opacity:0;transform:translate(0,-10vh) rotate(-20deg)}
-  10%{opacity:.55}
-  50%{transform:translate(-14vw,45vh) rotate(25deg)}
-  90%{opacity:.45}
-  100%{opacity:0;transform:translate(-4vw,110vh) rotate(-15deg)}
-}
+/* ================= PEACOCK FEATHER (real photograph, gently moving) ================= */
+.feather-bg{position:fixed;z-index:0;pointer-events:none;right:-3vw;bottom:-4vh;height:88vh;transition:opacity .8s, transform .8s}
+.feather-bg img{height:100%;width:auto;display:block;transform-origin:50% 100%;
+  animation:sway 10s ease-in-out infinite alternate, shimmer 7s ease-in-out infinite alternate;
+  filter:drop-shadow(0 10px 18px rgba(30,60,40,.12))}
+body.on-home .feather-bg{opacity:0}
+body:not(.on-home) .feather-bg{opacity:.2}
+@keyframes sway{from{transform:rotate(-2.2deg)}to{transform:rotate(1.8deg)}}
+@keyframes shimmer{from{filter:drop-shadow(0 10px 18px rgba(30,60,40,.12)) saturate(1) hue-rotate(-4deg) brightness(1)}
+  to{filter:drop-shadow(0 10px 18px rgba(30,60,40,.12)) saturate(1.18) hue-rotate(6deg) brightness(1.06)}}
+
+/* Sree Krishna picture at the top of the home page, in a temple-arch frame */
+.hero-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,70px);align-items:center;max-width:1100px}
+.deity{position:relative;justify-self:center;width:min(100%,360px);margin:120px 0 10px}
+.deity .feather-wrap{position:absolute;z-index:0;width:92%;left:34%;top:-30%;transform:rotate(17deg);pointer-events:none}
+.deity .feather-wrap img{width:100%;display:block;transform-origin:50% 96%;
+  animation:sway 10s ease-in-out infinite alternate, shimmer 7s ease-in-out infinite alternate}
+.arch{position:relative;z-index:1;aspect-ratio:3/4.1;border-radius:190px 190px 22px 22px;overflow:hidden;
+  border:3px solid var(--gold-soft);outline:1px solid rgba(184,137,43,.45);outline-offset:6px;
+  box-shadow:0 26px 60px -26px rgba(60,30,10,.55), 0 0 0 10px rgba(251,246,236,.65)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;animation:breathe 14s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+.arch::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%, rgba(255,214,140,.18), transparent 60%);
+  animation:lamp 4s ease-in-out infinite alternate;pointer-events:none}
+@keyframes lamp{from{opacity:.4}to{opacity:1}}
+.deity figcaption{position:relative;z-index:1;text-align:center;font-family:var(--head);color:var(--maroon);font-size:15px;margin-top:16px}
+
+/* slideshow of temple photos */
+.gallery{margin-top:64px;max-width:1100px}
+.slides{position:relative;aspect-ratio:16/8;border-radius:22px;overflow:hidden;background:#20160f;
+  box-shadow:0 26px 60px -30px rgba(40,20,5,.6)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+.slide.on{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide.on img{animation:kenburns 7s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1.08)}to{transform:scale(1)}}
+.slides .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.5);background:rgba(20,14,8,.35);color:#fff;font-size:22px;cursor:pointer;
+  display:grid;place-items:center;transition:background .2s, transform .2s;backdrop-filter:blur(3px)}
+.slides .nav:hover{background:rgba(15,111,108,.75);transform:translateY(-50%) scale(1.08)}
+.slides .prev{left:14px}.slides .next{right:14px}
+.dots{position:absolute;bottom:14px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:8px}
+.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:all .3s}
+.dots button.on{background:var(--gold-soft);width:26px;border-radius:5px}
+.slides::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(transparent, rgba(0,0,0,.35));z-index:2;pointer-events:none}
 
 /* ================= HEADER & MENU ================= */
 header.top{
@@ -129,7 +155,7 @@ h3{font-size:20px;color:var(--ink)}
 .btn.ghost{background:transparent;color:var(--teal)}
 .btn.ghost:hover{background:rgba(15,111,108,.08);transform:translateY(-2px)}
 
-.hero{min-height:52vh;max-width:640px;padding-top:4vh}
+.hero{max-width:620px;padding-top:2vh}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .home-cards{margin-top:54px;max-width:860px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px 24px 20px;
@@ -207,9 +233,11 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
   .tab.active::after{bottom:auto;top:-4px}
   main{padding:30px 16px 120px}
   footer{padding-bottom:110px}
-  .feather-bg{height:70vh;right:-14vw;bottom:auto;top:12vh;opacity:.5}
+  .feather-bg{height:70vh;right:-20vw}
   body:not(.on-home) .feather-bg{opacity:.14}
-  .hero{min-height:auto}
+  .hero-wrap{grid-template-columns:1fr}
+  .deity{width:min(64%,250px);order:-1;margin:96px auto 10px;transform:translateX(-14%)}
+  .slides{aspect-ratio:4/3}
   .fest.feature,.contact-grid{grid-template-columns:1fr}
   .notice{grid-template-columns:64px 1fr;gap:14px}
   .vz td:first-child{white-space:normal}
@@ -222,10 +250,8 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
 </head>
 <body class="on-home">
 
-<!-- the big peacock feather (drawn by the script at the bottom) -->
-<div class="feather-bg" aria-hidden="true"><svg id="feather" viewBox="0 0 200 600"></svg></div>
-<svg class="feather-drift" style="right:30vw;animation-delay:3s" viewBox="0 0 200 600" aria-hidden="true"><use href="#mini"/></svg>
-<svg class="feather-drift" style="right:12vw;animation-delay:14s;width:30px" viewBox="0 0 200 600" aria-hidden="true"><use href="#mini"/></svg>
+<!-- peacock feathers (real photograph), shown faintly behind the inner pages -->
+<div class="feather-bg" aria-hidden="true"><img src="images/mayilppeeli.webp" alt=""></div>
 
 <header class="top">
   <a class="brand" href="#home" aria-label="പൂമുഖം">
@@ -260,16 +286,24 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
 
   <!-- ================= പൂമുഖം / HOME ================= -->
   <section class="panel" id="home">
+    <div class="hero-wrap">
     <div class="hero">
       <div class="kicker">ഓം നമോ ഭഗവതേ വാസുദേവായ</div>
       <h1>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം</h1>
-      <div class="place">നിലമ്പതി, പൂലാനി</div>
+      <div class="place">നിലമ്പതി, പൂലാനി, മേലൂർ</div>
       <svg class="divider" viewBox="0 0 120 14" aria-hidden="true"><path d="M2 7h44M74 7h44" stroke="#b8892b" stroke-width="1"/><path d="M60 1.5c3 2.4 3 8.6 0 11-3-2.4-3-8.6 0-11z" fill="#0f6f6c"/><circle cx="52" cy="7" r="1.6" fill="#b8892b"/><circle cx="68" cy="7" r="1.6" fill="#b8892b"/></svg>
       <p class="lead">ഉണ്ണിക്കണ്ണന്റെ അനുഗ്രഹം തേടിയെത്തുന്ന എല്ലാ ഭക്തജനങ്ങൾക്കും മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രത്തിലേക്ക് ഹൃദ്യമായ സ്വാഗതം. ദർശന സമയം, പൂജകൾ, വഴിപാടുകൾ, ഉത്സവങ്ങൾ, പുതിയ അറിയിപ്പുകൾ എന്നിവ ഇവിടെ ഒറ്റനോട്ടത്തിൽ അറിയാം.</p>
       <div class="btns">
         <a class="btn solid" href="#pooja">വഴിപാടുകൾ കാണുക</a>
         <a class="btn ghost" href="#contact">എത്തിച്ചേരാനുള്ള വഴി</a>
       </div>
+    </div>
+    <!-- SREE KRISHNA PICTURE: to use the temple's own photo, replace images/krishna-venugopala.jpg -->
+    <figure class="deity">
+      <div class="feather-wrap" aria-hidden="true"><img src="images/mayilppeeli.webp" alt=""></div>
+      <div class="arch"><img src="images/krishna-venugopala.jpg" alt="ശ്രീകൃഷ്ണൻ ഓടക്കുഴൽ വായിക്കുന്നു"></div>
+      <figcaption>ശ്രീ വേണുഗോപാലൻ</figcaption>
+    </figure>
     </div>
 
     <div class="grid home-cards">
@@ -302,6 +336,23 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
           <p>ചിങ്ങമാസത്തിലെ ശ്രീകൃഷ്ണ ജയന്തി: ഉറിയടി, ശോഭായാത്ര, അർദ്ധരാത്രി പൂജ.</p>
           <a class="more" href="#ulsavam">ഉത്സവങ്ങൾ →</a>
         </div>
+      </div>
+    </div>
+
+    <!-- PHOTO SLIDESHOW: put photos in images/gallery and list them here -->
+    <div class="gallery rv">
+      <div class="kicker">ദൃശ്യങ്ങൾ</div>
+      <h2>ക്ഷേത്ര ദൃശ്യങ്ങൾ</h2>
+      <div class="slides" id="slides" aria-roledescription="carousel" aria-label="ക്ഷേത്ര ദൃശ്യങ്ങൾ">
+        <div class="slide on"><img src="images/gallery/01.jpg" alt="ക്ഷേത്രവും പരിസരവും"></div>
+        <div class="slide"><img src="images/gallery/02.jpg" alt="ചുറ്റുവിളക്ക് തെളിഞ്ഞ ക്ഷേത്രം" loading="lazy"></div>
+        <div class="slide"><img src="images/gallery/03.jpg" alt="ക്ഷേത്രത്തിലേക്കുള്ള വഴി" loading="lazy"></div>
+        <div class="slide"><img src="images/gallery/04.jpg" alt="സന്ധ്യാസമയത്തെ ക്ഷേത്രം" loading="lazy"></div>
+        <div class="slide"><img src="images/gallery/05.jpg" alt="ദീപാരാധന സമയത്ത്" loading="lazy"></div>
+        <div class="slide"><img src="images/gallery/06.jpg" alt="ക്ഷേത്ര കവാടം" loading="lazy"></div>
+        <button class="nav prev" aria-label="മുമ്പത്തെ ചിത്രം">‹</button>
+        <button class="nav next" aria-label="അടുത്ത ചിത്രം">›</button>
+        <div class="dots"></div>
       </div>
     </div>
   </section>
@@ -358,8 +409,13 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
       </div>
       <div class="card fest rv">
         <svg class="ico" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9 7 7 0 01-9-9z"/></svg>
-        <h3>വൃശ്ചിക ഏകാദശി</h3><div class="when">വൃശ്ചികം</div>
-        <p>ദിവസം മുഴുവൻ നാമജപവും ഏകാദശി വ്രതവും.</p>
+        <h3>ഏകാദശി</h3><div class="when">വൃശ്ചികം</div>
+        <p>നാട്ടിൽ പ്രസിദ്ധമായ ആഘോഷം: ദിവസം മുഴുവൻ നാമജപവും ഏകാദശി വ്രതവും.</p>
+      </div>
+      <div class="card fest rv">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14C9.5 18 6.5 18 4 19.5z"/><path d="M20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg>
+        <h3>സപ്താഹ യജ്ഞം</h3><div class="when">തീയതി ഉടൻ ചേർക്കും</div>
+        <p>ഏഴു ദിവസം നീണ്ടുനിൽക്കുന്ന പാരായണ യജ്ഞം; നാട്ടിൽ ഏറെ പ്രസിദ്ധം.</p>
       </div>
       <div class="card fest rv">
         <svg class="ico" viewBox="0 0 24 24"><path d="M12 3c1.5 1.8 2 3 2 4a2 2 0 01-4 0c0-1 .5-2.2 2-4z"/><path d="M6 12h12M8 12v9M16 12v9M5 21h14"/></svg>
@@ -415,7 +471,7 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
     <div class="grid" style="grid-template-columns:1.6fr 1fr;align-items:start">
       <div class="card rv">
         <!-- HISTORY: replace with the temple's own story -->
-        <p>നിലമ്പതിയിലെ പൂലാനിയിൽ സ്ഥിതി ചെയ്യുന്ന മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം നാട്ടുകാരുടെ ഭക്തിയുടെയും ഒരുമയുടെയും കേന്ദ്രമാണ്.</p>
+        <p>തൃശ്ശൂർ ജില്ലയിലെ മേലൂരിൽ, പൂലാനിക്കടുത്ത് നിലമ്പതിയിൽ, ചാലക്കുടിപ്പുഴയുടെ സമീപത്തായി ശാന്തസുന്ദരമായ ഒരു ഗ്രാമാന്തരീക്ഷത്തിലാണ് മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം സ്ഥിതി ചെയ്യുന്നത്. ഇവിടെ നടക്കുന്ന സപ്താഹ യജ്ഞവും ഏകാദശിയും നാട്ടിൽ ഏറെ പ്രസിദ്ധമാണ്.</p>
         <p>ക്ഷേത്രത്തിന്റെ ഐതിഹ്യവും ചരിത്രവും ഉടൻ ഇവിടെ ചേർക്കുന്നതാണ്.</p>
       </div>
       <div class="card rv">
@@ -435,7 +491,7 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
       <div class="card rv">
         <ul class="contact-list">
           <li><svg viewBox="0 0 24 24"><path d="M12 21.5s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10.5" r="2.3"/></svg>
-            <div><b>വിലാസം</b>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം<br>നിലമ്പതി, പൂലാനി<br>കേരളം</div></li>
+            <div><b>വിലാസം</b>മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം<br>നിലമ്പതി–മുക്കാൽവെട്ടി–നായരങ്ങാടി റോഡ്<br>പൂലാനി, മേലൂർ, തൃശ്ശൂർ<br>കേരളം 680721</div></li>
           <li><svg viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.5-2.3 1.5a11 11 0 006.5 6.5l1.5-2.3 4.5 1.8V19a2 2 0 01-2 2A16.5 16.5 0 013 5.5a2 2 0 012-2z"/></svg>
             <div><b>ഫോൺ</b>+91 — (ഉടൻ ചേർക്കും)</div></li>
           <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -446,7 +502,7 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
       </div>
       <div class="map rv">
         <iframe title="ക്ഷേത്രത്തിലേക്കുള്ള വഴി" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://maps.google.com/maps?q=Poolani%2C%20Kerala&z=14&output=embed"></iframe>
+          src="https://maps.google.com/maps?q=Mukkalvetti%20Temple%2C%20Poolany%2C%20Meloor%2C%20Kerala%20680721&z=15&output=embed"></iframe>
       </div>
     </div>
   </section>
@@ -455,6 +511,7 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
 <footer>
   <div class="mantra">ഓം നമോ നാരായണായ</div>
   © <span id="yr"></span> മുക്കാൽവെട്ടി ശ്രീകൃഷ്ണ ക്ഷേത്രം, നിലമ്പതി, പൂലാനി
+  <div style="font-size:12px;margin-top:6px;opacity:.75">ചിത്രങ്ങൾ: വേണുഗോപാലൻ, രവിവർമ്മ പ്രസ് (പൊതുസഞ്ചയം) · മയിൽപ്പീലി, വിക്കിമീഡിയ കോമൺസ് (പൊതുസഞ്ചയം)</div>
 </footer>
 
 <!-- small feather used for the logo and the drifting feathers -->
@@ -474,57 +531,27 @@ footer .mantra{font-family:var(--head);color:var(--maroon);font-size:17px;margin
 </svg>
 
 <script>
-/* ============ PEACOCK FEATHER: drawn barb by barb ============ */
+/* ============ PHOTO SLIDESHOW: one picture at a time ============ */
 (() => {
-  const svg = document.getElementById('feather'), NS = 'http://www.w3.org/2000/svg';
-  const el = (n, a, p) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; };
-  // shaft (rachis): a gentle curve from the base (100,600) to the tip (100,40)
-  const P0 = [100, 600], P1 = [132, 320], P2 = [96, 40];
-  const B = t => [(1-t)*(1-t)*P0[0] + 2*(1-t)*t*P1[0] + t*t*P2[0], (1-t)*(1-t)*P0[1] + 2*(1-t)*t*P1[1] + t*t*P2[1]];
-  const D = t => { const dx = 2*(1-t)*(P1[0]-P0[0]) + 2*t*(P2[0]-P1[0]), dy = 2*(1-t)*(P1[1]-P0[1]) + 2*t*(P2[1]-P1[1]), m = Math.hypot(dx, dy); return [dx/m, dy/m]; };
-  const mix = (a, b, f) => a.map((v, i) => Math.round(v + (b[i] - v) * f));
-  const C = { bronze:[140,112,52], green:[58,132,58], emerald:[8,118,104], gold:[200,158,40] };
-  const colorAt = t => t < .45 ? mix(C.bronze, C.green, t/.45) : t < .75 ? mix(C.green, C.emerald, (t-.45)/.3) : mix(C.emerald, C.gold, (t-.75)/.25);
-
-  const defs = el('defs', {});
-  defs.innerHTML = `
-    <radialGradient id="eyeOuter" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#c9a640" stop-opacity=".95"/><stop offset=".8" stop-color="#8fae3c" stop-opacity=".85"/><stop offset="1" stop-color="#5f8f3e" stop-opacity="0"/></radialGradient>
-    <radialGradient id="eyeMid" cx="50%" cy="48%" r="50%"><stop offset=".55" stop-color="#16867f"/><stop offset="1" stop-color="#b07a2a"/></radialGradient>
-    <radialGradient id="eyeIn" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#3a6fd0"/><stop offset=".6" stop-color="#1d3f8f"/><stop offset="1" stop-color="#0c1d4a"/></radialGradient>
-    <radialGradient id="glint" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff6d6" stop-opacity=".9"/><stop offset="1" stop-color="#fff6d6" stop-opacity="0"/></radialGradient>
-    <linearGradient id="shaft" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#cdb27a"/><stop offset="1" stop-color="#8a7a44"/></linearGradient>`;
-
-  const sway = el('g', { class: 'sway' });
-  const L = el('g', { class: 'barbs-l' }, sway), R = el('g', { class: 'barbs-r' }, sway);
-  const eyeT = .8;
-  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-
-  for (let t = .04; t < .985; t += .0036) {
-    const [x, y] = B(t), [dx, dy] = D(t);
-    // width profile: wispy & sparse near the base, full around the eye, closing at the tip
-    let len = t < .3 ? 30 + 70 * (t/.3) : t < eyeT ? 100 - 10 * ((t-.3)/(eyeT-.3)) : 90 * Math.sqrt(Math.max(0, 1 - ((t-eyeT)/(1-eyeT+.02)) ** 1.6));
-    len *= .9 + rnd() * .2;
-    const loose = t < .32, col = colorAt(t);
-    const op = loose ? .35 + rnd() * .25 : .58 + rnd() * .3;
-    for (const s of [-1, 1]) {
-      if (loose && rnd() < .35) continue;          // gaps in the fluffy lower part
-      const nx = -dy * s, ny = dx * s;              // normal to the shaft
-      const up = loose ? .15 : .55;                 // barbs lean toward the tip
-      const ex = x + (nx * .85 + dx * up) * len, ey = y + (ny * .85 + dy * up) * len;
-      const cx = x + nx * len * .5 + dx * len * (loose ? -.05 : .15), cy = y + ny * len * .5 + dy * len * (loose ? -.05 : .15);
-      el('path', { d: `M${x.toFixed(1)} ${y.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`,
-        stroke: `rgb(${col})`, 'stroke-opacity': op.toFixed(2), 'stroke-width': loose ? .6 : .9, fill: 'none', 'stroke-linecap': 'round' }, s < 0 ? L : R);
-    }
+  const box = document.getElementById('slides'); if (!box) return;
+  const slides = [...box.querySelectorAll('.slide')], dots = box.querySelector('.dots');
+  let i = 0, timer;
+  slides.forEach((_, k) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'ചിത്രം ' + (k + 1)); b.onclick = () => go(k, true); dots.appendChild(b); });
+  function go(k, user) {
+    slides[i].classList.remove('on'); dots.children[i].classList.remove('on');
+    i = (k + slides.length) % slides.length;
+    slides[i].classList.add('on'); dots.children[i].classList.add('on');
+    if (user) start();
   }
-  el('path', { d: `M${P0} Q${P1} ${P2}`, stroke: 'url(#shaft)', 'stroke-width': 2.2, fill: 'none', 'stroke-linecap': 'round' }, sway);
-
-  // the eye (ocellus), turned to follow the shaft
-  const [ex, ey] = B(eyeT + .05), [tx, ty] = D(eyeT + .05), ang = Math.atan2(ty, tx) * 180 / Math.PI + 90;
-  const eye = el('g', { transform: `translate(${ex.toFixed(1)} ${ey.toFixed(1)}) rotate(${ang.toFixed(1)})` }, sway);
-  el('ellipse', { rx: 50, ry: 64, fill: 'url(#eyeOuter)', opacity: .85 }, eye);
-  el('ellipse', { rx: 33, ry: 44, cy: 3, fill: 'url(#eyeMid)' }, eye);
-  el('path', { d: 'M0 -26 C-22 -16 -24 14 0 32 C24 14 22 -16 0 -26z', fill: 'url(#eyeIn)' }, eye);
-  el('ellipse', { rx: 9, ry: 12, cy: -8, cx: -6, fill: 'url(#glint)', class: 'eye-glow' }, eye);
+  function start() { clearInterval(timer); timer = setInterval(() => go(i + 1), 4500); }
+  box.querySelector('.prev').onclick = () => go(i - 1, true);
+  box.querySelector('.next').onclick = () => go(i + 1, true);
+  box.addEventListener('mouseenter', () => clearInterval(timer));
+  box.addEventListener('mouseleave', start);
+  let x0 = null;
+  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1), true); x0 = null; });
+  go(0); start();
 })();
 
 /* ============ MENU: switch pages ============ */
